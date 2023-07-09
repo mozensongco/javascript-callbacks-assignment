@@ -23,3 +23,37 @@
 //Hint: When dealing with a form submission that takes an event variable as a parameter, use e.preventDefault()
 //      (or event.preventDefault() depending on the name of the variable) to prevent the page
 //      from refreshing when a form is submitted. Do all your checks after that line.
+
+function validateForm(e) {
+    e.preventDefault();
+    let name = document.querySelector("#name").value;
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#password").value;
+
+    if (name == "") {
+        alert("Enter your name, please.");
+        return false;
+    }
+    else if (!email.includes("@")) {
+        alert("Enter a proper email, please.");
+        return false;
+    }
+    else if (password.length < 8) {
+        if (password == "") {
+            alert("Enter a password, please.");
+            return false;
+        } else {
+            alert("Your password must be at least 8 characters.");
+            return false;
+        }
+    }
+    return true;
+}
+
+document.querySelector("#userForm").addEventListener("submit", validateForm);
+
+// Some interesting things I noticed:
+
+// I don't know why a given alert comes up twice when the error is encountered.
+// Also, it's interesting that with successive tests, the "There was an error" message is appended, such that successive errors accumulate...
+// Actually, I suppose it's another visual indicator to help test multiple error messages at once.
