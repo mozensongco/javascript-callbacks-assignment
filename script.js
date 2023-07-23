@@ -34,18 +34,16 @@ function validateForm(e) {
         alert("Enter your name, please.");
         return false;
     }
-    else if (!email.includes("@")) {
+    if (!email.includes("@")) {
         alert("Enter a proper email, please.");
         return false;
     }
-    else if (password.length < 8) {
+    if (password.length < 8) {
         if (password == "") {
             alert("Enter a password, please.");
-            return false;
-        } else {
-            alert("Your password must be at least 8 characters.");
-            return false;
         }
+        alert("Your password must be at least 8 characters.");
+        return false;
     }
     return true;
 }
